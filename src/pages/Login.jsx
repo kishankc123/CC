@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 class Login extends React.Component{
 
@@ -19,10 +20,12 @@ class Login extends React.Component{
         alert("All the fields are mandatory");
         return;
         }
+        
         this.state.login="true";
         this.props.LoginHandler(this.state.name,this.state.login);
         this.setState({name: " " , email: " ",password: ''})   
         console.log(this.state); 
+
     
         }
 
@@ -30,9 +33,8 @@ class Login extends React.Component{
 
             this.state.login="false";
             this.setState({name: " " , email: " ",password: ''})
-            console.log(this.state); 
-      
-
+            console.log(this.state);     
+  
         }
 
     render()

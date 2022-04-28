@@ -6,15 +6,14 @@ import {
     NavItem,
     NavLinks,
     } from './SHeader'; 
-import AuthContext from '../App'
-
+import AuthContext from './AuthContext';
 const Header = () => {
 
-    const status = useContext(AuthContext)
+    const value = useContext(AuthContext)
 
-    console.log(status);
+    console.log(value.login);
 
-    if(status=="false")
+    if(value.login=="false")
     {
         return (
             <div>

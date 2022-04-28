@@ -7,29 +7,28 @@ import Login from './pages/Login'
 import AddBlog from './Components/AddBlog';
 import {useState, useEffect} from 'react';
 import Edit from './Components/Edit';
+import AuthContext from './Components/AuthContext';
 
 function App() {
     
   const [name,setName] = useState("");
   const[email,setEmail] = useState("");
   const [password,setPassword] = useState("");
-  const [login,setLogin] = useState("");
+  const [status,setStatus] = useState("false");
 
-    const LoginHandler = (name,login) => {
+  const LoginHandler = (name,status) => {
       console.log(name);
-      console.log(login);
+      console.log(status);
       setName(name);
-      setLogin(login);
+      setStatus(status);
   }  
 
   console.log(name);
-  console.log(login);
+  console.log(status);
 
-  const AuthContext = React.createContext(login);
-  
   return (
     <div > 
-    <AuthContext.Provider value='login'>
+    <AuthContext.Provider value={{login : status}}>
      <Router>
       <Routes>
       <Route exact path="/"  element={<Landingpage/>}/>

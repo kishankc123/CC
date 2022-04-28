@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useContext}from 'react';
 import { 
     Nav, 
     Navbarcontainer, 
@@ -6,28 +6,62 @@ import {
     NavItem,
     NavLinks,
     } from './SHeader'; 
+import AuthContext from '../App'
 
 const Header = () => {
-  return (
-    <div>
-         <Nav>
-          <Navbarcontainer>
-                                      
-              <NavMenu>
 
-                  <NavItem>
-                      <NavLinks to = "addblog">  Add your Blog </NavLinks>
-                  </NavItem>
+    const status = useContext(AuthContext)
 
-                  <NavItem>
-                      <NavLinks to = "/login"> Log In </NavLinks>
-                  </NavItem>                  
-              </NavMenu>
+    console.log(status);
 
-            </Navbarcontainer>
-        </Nav>
-    </div>
-  );
+    if(status=="false")
+    {
+        return (
+            <div>
+                 <Nav>
+                  <Navbarcontainer>
+                                              
+                      <NavMenu>
+        
+                          <NavItem>
+                              <NavLinks to = "addblog">  Your Blogs </NavLinks>
+                          </NavItem>
+        
+                          <NavItem>
+                              <NavLinks to = "/login"> Log Out </NavLinks>
+                          </NavItem>                                        
+                      </NavMenu>
+        
+                    </Navbarcontainer>
+                </Nav>
+            </div>
+          );
+    }
+
+    else
+    {
+        return (
+            <div>
+                 <Nav>
+                  <Navbarcontainer>
+                                              
+                      <NavMenu>
+        
+                          <NavItem>
+                              <NavLinks to = "addblog">  Add a blog </NavLinks>
+                          </NavItem>
+        
+                         <NavItem>
+                              <NavLinks to = "/login"> Log In </NavLinks>
+                          </NavItem>                                  
+                      </NavMenu>
+        
+                    </Navbarcontainer>
+                </Nav>
+            </div>
+          );
+    }
+  
 }
 
 export default Header;

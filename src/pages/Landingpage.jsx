@@ -7,12 +7,11 @@ const Landingpage = () => {
 
   const img = { width:"100%"}
   return (
-      <div>
-          <div class="ui huge header" >Blog-Nation</div>
+      <div class="container-fluid">
+          <div class="h1" >Blog-Nation</div>
           <Header/>
           <img style={img}src={main}  alt="Main image"/>  
-          <Blog 
-          />
+          <Blog />
           
       </div>
     

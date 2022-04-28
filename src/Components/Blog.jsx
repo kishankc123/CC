@@ -1,9 +1,7 @@
-import React from 'react'
-
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 
 const Blog = () => {
-
 
     function remove(){
 
@@ -12,6 +10,7 @@ const Blog = () => {
     localStorage.removeItem('Title');
     localStorage.removeItem('Article');
   }
+
   return (
     <div class="ui segment">
 

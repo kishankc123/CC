@@ -5,7 +5,7 @@ import {Route, Routes } from 'react-router-dom'
 import Landingpage from './pages/Landingpage';
 import Login from './pages/Login'
 import AddBlog from './Components/AddBlog';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import Edit from './Components/Edit';
 
 function App() {
@@ -13,35 +13,43 @@ function App() {
   const [name,setName] = useState("");
   const[email,setEmail] = useState("");
   const [password,setPassword] = useState("");
+  const [login,setLogin] = useState("");
 
+    const LoginHandler = (name,login) => {
+      console.log(name);
+      console.log(login);
+      setName(name);
+      setLogin(login);
+  }  
 
-  const LoginHandler = (name,email,password) => {
-    console.log(name,email,password);
-    
-  }   
+  console.log(name);
+  console.log(login);
 
+  const AuthContext = React.createContext(login);
+  
   return (
     <div > 
-    <Router>
+    <AuthContext.Provider value='login'>
+     <Router>
       <Routes>
       <Route exact path="/"  element={<Landingpage/>}/>
 
       <Route path="/login"
        element={<Login 
       LoginHandler={LoginHandler}
-       setName={setName} 
-       setEmail={setEmail} 
-       setPassword={setPassword}
+     
        />}/>
 
       <Route path="/addblog"
-       element={<AddBlog name={name}/>}
+       element={<AddBlog  name = {name} 
+       />}
       
        />
 
-       <Route path="/edit" element={Edit  }/>
+       <Route path="/edit" element={Edit}/>
       </Routes>
-    </Router>                 
+     </Router>   
+    </AuthContext.Provider>             
     
     </div>
   );

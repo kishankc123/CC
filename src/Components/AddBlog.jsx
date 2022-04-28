@@ -4,36 +4,24 @@ const AddBlog = (props) => {
   
   console.log(props.name);
 
-  const[Author,setAuthor]= useState("")
   const[title,setTitle] = useState("");  
   const[date,setDate] = useState("");
   const [article,setArticle] = useState("");
-  
 
-
-  const NewBlog = (e) =>{
-    
-    localStorage.setItem('Author',Author);
+  const NewBlog = (e) =>{    
+    localStorage.setItem('Author',props.name);
     localStorage.setItem('Title',title)
     localStorage.setItem('Published Date',date)    
     localStorage.setItem('Article',article);
-   
     }
-
-  return (
+    
+   return (
     <div className='ui main'>
         <form className='ui form' onSubmit={NewBlog}>
           <div className='ui field'>
 
-            <label> Author </label>
-            <input 
-            type="text" 
-            name="authorname" 
-            value={Author}
-            placeholder="Name"
-            onChange={(e)=>setAuthor(e.target.value)}
-            />
-
+            <label> Author: {props.name} </label>
+            
             <label> Title </label>
             <input 
             type="text" 
@@ -61,14 +49,9 @@ const AddBlog = (props) => {
 
 
             <br/>
-
             <button  className='ui button'> Submit my article </button>
-
-
           </div>
-
         </form>
-
     </div>
   )
 }

@@ -18,12 +18,14 @@ const Logout = (props) => {
 
   return (
     <div class="container-fluid">
+      <div  class="ui segment">
       <div class="alert alert-warning"> 
         Are you sure you want to log out?
       </div>
         <div>
          <button onClick={out}> Log Out </button>
-        </div>             
+        </div> 
+        </div>            
     </div>
   )
 }

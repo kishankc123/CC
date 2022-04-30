@@ -13,21 +13,25 @@ const Header = () => {
 
     console.log(value.login);
 
-    if(value.login=="false")
+    if(value.login==true)
     {
         return (
-            <div>
+            <div class="container-fluid">
                  <Nav>
                   <Navbarcontainer>
                                               
                       <NavMenu>
         
                           <NavItem>
-                              <NavLinks to = "addblog">  Your Blogs </NavLinks>
+                              <NavLinks to = "blog">  Your Blogs </NavLinks>
+                          </NavItem>
+
+                          <NavItem>
+                              <NavLinks to = "addblog">  Add a new One </NavLinks>
                           </NavItem>
         
                           <NavItem>
-                              <NavLinks to = "/login"> Log Out </NavLinks>
+                              <NavLinks to = "/logout"> Log Out </NavLinks>
                           </NavItem>                                        
                       </NavMenu>
         

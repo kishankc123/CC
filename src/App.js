@@ -7,7 +7,8 @@ import Login from './pages/Login'
 import AddBlog from './Components/AddBlog';
 import {useState, useEffect} from 'react';
 import Edit from './Components/Edit';
-import AuthContext from './Components/AuthContext';
+import AuthContext  from './Components/AuthContext';
+import Logout from './Components/logout';
 
 function App() {
     
@@ -45,7 +46,9 @@ function App() {
       
        />
 
-       <Route path="/edit" element={Edit}/>
+       <Route path="/edit" element={<Edit/>}/>
+
+       <Route path="/logout" element={<Logout/>}/>
       </Routes>
      </Router>   
     </AuthContext.Provider>             

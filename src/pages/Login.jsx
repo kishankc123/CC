@@ -1,18 +1,19 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import {Navigate } from 'react-router-dom';
 
 class Login extends React.Component{
-
 
     state={
 
         name : " ",
         email : " ",
         password:"",
-        login:"false"
+        login:false,
+        redirect: false
+
     }
 
-    add=(e)=>{
+      add=(e)=>{
 
         e.preventDefault();
 
@@ -20,30 +21,21 @@ class Login extends React.Component{
         alert("All the fields are mandatory");
         return;
         }
-        
-        this.state.login="true";
+
+        this.state.login=true;
         this.props.LoginHandler(this.state.name,this.state.login);
-        this.setState({name: " " , email: " ",password: ''})   
-        console.log(this.state); 
-
-    
-        }
-
-        out=(e)=>{
-
-            this.state.login="false";
-            this.setState({name: " " , email: " ",password: ''})
-            console.log(this.state);     
-  
-        }
+        this.setState({name: " " , email: " ",password: '',redirect: true})   
+        console.log(this.state);         
+       
+        }       
 
     render()
     {
-        if (this.state.login==="false")
-            {
-                return(
-                    <div className='ui main'>
-                        <h2> Login</h2>            
+        if(this.state.redirect==false)
+        {
+        return(
+            <div className='ui main'>
+                <h2> Login</h2>            
                 <form className='ui form' >
                     <div className='field'>
                     
@@ -71,24 +63,21 @@ class Login extends React.Component{
                     value = {this.state.password}
                     onChange={(e)=>this.setState({password:e.target.value})}/>
 
-                    <button onClick={this.add}>Login</button>                                            
+                    <button onClick={this.add} >Login</button>                                            
                             
                     </div>
                 </form>
                     
-                    </div>
-                );
-            }
+            </div>
+            );
+        }
 
-            else
-            {
-                return(
-                <div>
-                <button onClick={this.out}> Log Out </button>
-                </div>
-                );
-            }
+        else
+        return(
+            <Navigate to="/"/>
+        )
     }
+
 }
 
 export default Login;
